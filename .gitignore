@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Expo & Web builds
+.expo/
+dist/
+web-build/
+
+# Python & Server Environment / Secrets
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.env.local
+server/.env
+server/__pycache__/
+*.db
+*.sqlite
+*.sqlite3
+server/*.db
+server/sompheareak.db
+sompheareak.db
+*.log
+server/*.log
+server.log
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System & Editor
+.DS_Store
+*.pem
+.vscode/
