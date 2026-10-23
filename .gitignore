@@ -1,38 +1,34 @@
-# Dependencies
-node_modules/
-.pnp
+# dependencies
+/node_modules
+/.pnp
 .pnp.js
+.yarn/install-state.gz
 
-# Expo & Web builds
-.expo/
-dist/
-web-build/
+# testing
+/coverage
 
-# Python & Server Environment / Secrets
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.env
-.env.local
-server/.env
-server/__pycache__/
-*.db
-*.sqlite
-*.sqlite3
-server/*.db
-server/sompheareak.db
-sompheareak.db
-*.log
-server/*.log
-server.log
+# next.js
+/.next/
+/out/
 
-# Logs
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# System & Editor
-.DS_Store
-*.pem
-.vscode/
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

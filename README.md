@@ -1,93 +1,37 @@
-# Somphea Reak Studio – Admin Management Panel & Backend Suite
+# 🛡️ Somphea Reak – Admin Management Desk & Control Suite
 
-> **Cambodia Kingdom of Wonder • Premium Collectibles, Toys & Customizable Italy Charm Jewelry**  
-> Complete Admin Management Desk built with React Native / Expo Web + Python REST API & SQLite sync engine.
+The dedicated, standalone administration suite for **Somphea Reak (សម្ភារៈ)** Toy & Charm Studio.
 
----
+## 🚀 Architecture
+- **Framework**: Next.js 15 (App Router) + React 19 + TypeScript
+- **Styling**: Tailwind CSS + Framer Motion + Lucide Icons
+- **Database**: Neon Serverless PostgreSQL (`@neondatabase/serverless`)
+- **Hosting**: Render.com Web Service
+- **Companion App**: [sompheareak-pro](https://github.com/Mingstar556/sompheareak-pro) (Customer Storefront sharing the exact same Neon DB)
 
-## 🛠️ Included Admin Modules
+## 📦 Features
+- 🔐 **PIN Access Gate**: Fast and secure admin login.
+- 📦 **Products Management**: Add custom products with images, prices, stock counts, tags, descriptions, and category assignment; edit and delete live.
+- ✨ **Charms Management**: Add custom charms with high-res link plates, automatic unique charm code generation (`GF1`, `CAT`, `P01`, etc.), and real-time inventory management.
+- 📋 **Orders Management**: Real-time customer orders feed, status progression (Pending -> Confirmed -> Packaging -> Shipped -> Delivered -> Rejected), printable receipts, and 1-click customer Telegram chat.
+- 🏷️ **Categories & Filters Builder**: Create custom product categories and filter tags with Khmer/English localization and emojis.
+- 🍱 **Category Bento 3-Box Manager**: Customize the 3 featured bento categories shown at the very top of the customer storefront.
+- ⚙️ **Storefront Live Editor**: Update top announcement banner, hero badge, hero title, subtitle, and free delivery threshold in real-time.
+- 🎟️ **Vouchers & Discounts**: Create promotional discount codes, manage point costs and minimum order requirements.
+- 🔔 **Notification Center**: View customer notifications and broadcast announcements.
 
-- **PIN Security Gate**: Protected administration console with rate-limiting and session management.
-- **Real-Time Order Desk**: Live order stream, auto audio alerts, status workflow (Pending, Approved, Shipped, Rejected), and thermal receipt editor.
-- **Product & Inventory Manager**: Create, edit, search, and manage stock for collectibles, figurines, and studio products.
-- **9mm Italian Charm Jewelry Engine**: Live stock controls, charm pricing, and custom link catalog management.
-- **Customer Loyalty & Points Desk**: Direct customer lookup, Telegram links, loyalty point adjustments, and voucher redemptions.
-- **Category & Filter Matrix**: Dynamic multi-category grouping, badge tags, and storefront organization.
-- **Admin CLI (`server/admin_cli.py`)**: Terminal-based administrative toolkit for rapid database inspection, data seeding, and backups.
-- **Python REST API (`server/server.py`)**: Flask backend API with CORS, JWT authentication, and SQLite persistence.
+## 🛠️ Deploy to Render.com
 
----
-
-## 🚀 Quick Start (Local Development)
-
-### 1. Run Admin Web Desk
-```bash
-# Install dependencies
-npm install
-
-# Launch Admin Panel (default: http://localhost:8082)
-npm run web
-
-# Or start with Expo bundler
-npm start
-```
-
-### 2. Run Backend Server (Optional if connecting to remote API)
-```bash
-cd server
-pip install -r requirements.txt
-cp .env.example .env
-./run_server.sh
-```
-
-### 3. Run Admin CLI Tool
-```bash
-python3 server/admin_cli.py --open
-```
-
----
-
-## 🌐 Deploy Admin Desk as a Website
-
-### Option 1: Vercel (Recommended — One Click)
-1. Push this repository to GitHub (`sompheareak-admin`).
-2. Go to [Vercel Dashboard](https://vercel.com/new) and import your `sompheareak-admin` repository.
-3. Vercel automatically detects the build configuration via `vercel.json`:
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. Set Environment Variable:
-   - `EXPO_PUBLIC_API_URL`: Your live backend API URL (e.g. `https://api.sompheareak.com`)
-5. Click **Deploy**!
-
-### Option 2: Netlify
-1. Import repository on [Netlify](https://app.netlify.com/start).
-2. The included `netlify.toml` automatically configures:
-   - **Build command**: `npm run build`
-   - **Publish directory**: `dist`
-   - **SPA Redirects**: `/* -> /index.html`
-3. Set `EXPO_PUBLIC_API_URL` under Site configuration > Environment variables.
-4. Click **Deploy site**!
-
-### Option 3: Manual Static Build
-```bash
-# Export static production website into ./dist
-npm run build
-
-# Preview locally
-npm run preview
-```
-
----
-
-## ⚙️ Environment Variables
-
-| Variable | Description | Default |
-| :--- | :--- | :--- |
-| `EXPO_PUBLIC_API_URL` | Base URL of the Somphea Reak API server | Auto-resolves (`http://localhost:5000` or same-origin) |
-
----
-
-## 📄 License
-
-See [LICENSE](LICENSE) for full proprietary license terms.  
-Copyright © 2026 Somphea Reak Studio (សម្ភារៈ). All Rights Reserved.
+1. Go to [Render Dashboard](https://dashboard.render.com/) and click **New +** -> **Web Service**.
+2. Connect your GitHub repository `Mingstar556/sompheareak-admin`.
+3. Configure settings:
+   - **Environment**: `Node`
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+4. Add the following **Environment Variables**:
+   - `DATABASE_URL`: Your Neon PostgreSQL connection string (must be the **same** as `sompheareak-pro`):
+     ```
+     postgresql://neondb_owner:YOUR_PASSWORD@ep-YOUR-PROJECT.us-east-2.aws.neon.tech/neondb?sslmode=require
+     ```
+   - `NEXT_PUBLIC_STOREFRONT_URL`: URL to your deployed `sompheareak-pro` web service.
+5. Click **Deploy Web Service**.
